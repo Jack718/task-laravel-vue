@@ -6,6 +6,7 @@
     </ul>
 @endif
 {!! Form::open(['route' => ['tasks.store','project' => $project->id],'class'=>'form-inline']) !!}
+    <td class="date-cell"></td>
     <td class="first-cell">
         {!! Form::text('name',null,['placeholder' => '有什么任务要完成么？','class' => 'form-control']) !!}
         {{--{!! Form::hidden('project',$project->id) !!}--}}

@@ -18,6 +18,7 @@
                             {{--<a href="projects/{{ $project -> id }}">--}}
                             <a href="{{ route('projects.show',$project -> name) }}">
                                     <img src="{{ asset('images/thumbnail/'.$project ->thumbnail) }}" alt="{{ $project ->name }}">
+                                    {{--<img src="/images/thumbnail/{{ $project ->thumbnail ? $project ->thumbnail: 'default.jpg'}}" alt="{{ $project ->name }}">--}}
                                 <div class="caption">
                                     <h4 class="text-center"> {{ $project ->name }}</h4>
                                 </div>

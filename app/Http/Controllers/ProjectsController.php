@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Project;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use Redirect;
 use Image;
@@ -65,6 +64,7 @@ class ProjectsController extends Controller
      */
     public function show($name)
     {
+//        return Carbon::createFromDate(1991,3,9)->age;
         $project = Auth::user()->projects()->where('name',$name)->first();
         $toDo = $project -> tasks() -> where('completed',0) -> get();
         $Done = $project -> tasks() -> where('completed',1) -> get();

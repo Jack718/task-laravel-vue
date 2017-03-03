@@ -18,4 +18,11 @@ class Project extends Model
     public function tasks(){
         return $this->hasMany(Task::class);
     }
+
+    public function getThumbnailAttribute($value){
+        if(empty($value)){
+            return 'default.jpg';
+        }
+        return $value;
+    }
 }
