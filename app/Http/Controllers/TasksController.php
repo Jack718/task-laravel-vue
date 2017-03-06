@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\CreateTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
+use App\Repositories\TasksRepository;
 
 class TasksController extends Controller
 {
@@ -19,6 +20,12 @@ class TasksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $task;
+    public function __construct(TasksRepository $task)
+    {
+        $this->task = $task;
+    }
+
     public function index()
     {
         $toDo = Auth::user()->tasks()->where('completed',0)->paginate(15);
@@ -109,5 +116,14 @@ class TasksController extends Controller
         $task -> save();
         return Redirect::back();
 
+    }
+
+    public function charts(){
+        $total = $this->task->total();
+        $toDoCount = $this->task->toDoCount();
+        $doneCount = $this->task->doneCount();
+        $names = Project::lists('name');
+        $projects = Project::with('tasks')->get();
+        return view('tasks.charts',compact('total','toDoCount','doneCount','names','projects'));
     }
 }

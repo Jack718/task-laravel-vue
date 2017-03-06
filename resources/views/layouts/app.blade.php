@@ -49,6 +49,7 @@
                 <ul class="nav navbar-nav">
                     {{--<li><a href="{{ route('tasks.index') }}">Home</a></li>--}}
                     <li>{{ link_to_route('tasks.index','所有任务') }}</li>
+                    <li>{{ link_to_route('tasks.charts','图表统计') }}</li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
