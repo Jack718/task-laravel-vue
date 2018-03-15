@@ -20,3 +20,8 @@ Route::resource('projects','ProjectsController');
 Route::get('tasks/charts',['as'=>'tasks.charts','uses'=>'TasksController@charts']);
 Route::post('tasks/{id}/check',['as'=>'tasks.check','uses'=>'TasksController@check']);
 Route::resource('tasks','TasksController');
+Route::get('tasks/show','tasksController@show');
+
+Route::post('tasks/{id}/steps/complete' , 'StepsController@completeAll');
+Route::delete('tasks/{id}/steps/clear' , 'StepsController@clearCompleted');
+Route::resource('tasks.steps','StepsController');

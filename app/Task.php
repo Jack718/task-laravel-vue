@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Project;
+use App\Step;
 
 class Task extends Model
 {
@@ -17,5 +18,10 @@ class Task extends Model
 
     public function getProjectListAttribute(){
         return $this -> project -> id;
+    }
+
+    public function steps()
+    {
+        return $this->hasMany(Step::class);
     }
 }
