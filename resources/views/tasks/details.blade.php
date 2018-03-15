@@ -52,7 +52,6 @@
                 </div>
             </div>
         </div>
-        
         <pre>@{{ $data }}</pre>
     </div>
 @endsection
