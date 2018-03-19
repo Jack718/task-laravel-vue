@@ -18,7 +18,9 @@ new Vue({
     mounted:function () {
         this.fetchSteps();
     },
-    components:{ StepList },
+    components:{
+        StepList:StepList
+    },
     methods:{
         fetchSteps:function () {
             resource.query().then((response)=>{
@@ -27,9 +29,8 @@ new Vue({
                 response.status;
             });
         },
-        addStep:function () {
-            resource.save('',{name:this.newStep}).then((response)=>{
-                this.newStep = '';
+        addStep:function (step) {
+            resource.save('',{name:step}).then((response)=>{
             this.fetchSteps();
         },(response)=>{
                 response.status;
@@ -49,11 +50,6 @@ new Vue({
                 response.status;
             });
         },
-        editStep:function (step) {
-            this.removeStep(step);
-            this.newStep = step.name;
-            this.$refs.newStep.focus();
-        },
         completeAll:function () {
             this.$http.post(this.baseUrl+'/complete').then((response)=>{
                 this.fetchSteps();
@@ -67,19 +63,6 @@ new Vue({
         },(response)=>{
                 response.status;
             });
-        },
-
-    },
-    computed:{
-        completions:function () {
-            return this.steps.filter(function (step) {
-                return step.completed;
-            })
-        },
-        remaings:function () {
-            return this.steps.filter(function (step) {
-                return !step.completed;
-            })
-        },
+        }
     }
 })
