@@ -2,6 +2,15 @@
 
 @section('content')
 <div class="container">
+    @if(session('register'))
+        <div class="alert alert-success">
+            {{ session('register') }}
+            <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true"> &times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+        </div>
+    @endif
     <div class="row">
         @if($projects)
             @foreach($projects as $project)
