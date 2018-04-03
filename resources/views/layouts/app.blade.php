@@ -51,6 +51,9 @@
                     <li>{{ link_to_route('tasks.index','所有任务') }}</li>
                     <li>{{ link_to_route('tasks.charts','图表统计') }}</li>
                 </ul>
+                @if(Auth::user())
+                    <search></search>
+                @endif
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
@@ -77,17 +80,20 @@
     @yield('content')
 
     <div class="clearfix"></div>
-    <footer class="footer">
-        <div class="container">
-            当前总共有{{ $total }}任务，已完成{{ $doneCount }}个，未完成{{  $toDoCount }}个！
-        </div>
-    </footer>
+    @if(Auth::user())
+        <footer class="footer">
+            <div class="container">
+                当前总共有{{ $total }}任务，已完成{{ $doneCount }}个，未完成{{  $toDoCount }}个！
+            </div>
+        </footer>
+    @endif
 
     <!-- JavaScripts -->
     <script src="//cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>--}}
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/search.js') }}"></script>
     @yield('customJS')
 </body>
 </html>

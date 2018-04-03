@@ -8,13 +8,13 @@
                 </h2>
                 <h2 v-if="completions.length && type == 'completed' ">
                     已完成的步骤({{ completions.length }})
-                    <span class="btn btn-sm btn-danger" @click="clearCompleted">清除所有已完成</span>
+                    <span class="btn btn-sm btn-danger" @click="clearCompleted">清除所有</span>
                 </h2>
             </div>
             <div class="panel-body">
                 <ul class="list-group" >
-                    <transition-group>
-                        <li class="list-group-item" v-for="step in typeSwitch">
+                    <transition-group name="fade" enter-class="fadeIn" leave-class="fadeOut">
+                        <li :key="step.name" class="list-group-item animated" v-for="step in typeSwitch">
                             <span @dblclick='editStep(step)'>{{ step.name }}</span>
                             <span class="pull-right">
                                 <i class="fa fa-check" @click="toggleCompletion(step)"></i>
@@ -22,7 +22,6 @@
                             </span>
                         </li>
                     </transition-group>
-
                 </ul>
             </div>
         </div>

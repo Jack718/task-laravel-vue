@@ -18,6 +18,7 @@ elixir(function(mix) {
             'charts/pie.js',
             'charts/bar.js'
             ],'public/js/chart.js')
-        .webpack('vue/app.js','public/js/step.js');
+        .webpack('vue/app.js','public/js/step.js')
+        .webpack('vue/search.js','public/js/search.js');
     mix.copy("node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js","public/js/app.js")
 });

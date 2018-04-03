@@ -53,14 +53,14 @@ new Vue({
         completeAll:function () {
             this.$http.post(this.baseUrl+'/complete').then((response)=>{
                 this.fetchSteps();
-        },(response)=>{
+            },(response)=>{
                 response.status;
             });
         },
         clearCompleted:function () {
             this.$http.delete(this.baseUrl+'/clear').then((response)=>{
                 this.fetchSteps();
-        },(response)=>{
+            },(response)=>{
                 response.status;
             });
         }
